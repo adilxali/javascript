@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Count : 
+        <span class="count">
+        0 
+        </span>
+    </p>
+   <button onclick="add()">
+    +
+
+    </button>
+    <button onclick="minus()">
+    - 
+
+    </button>
+
+<script>
+    let count = document.querySelector('.count');
+
+    function add() {
+        count.innerText = Number(count.innerText)+1
+    }
+    function minus(){
+        if (Number(count.innerText) > 0 ){
+            count.innerText = Number(count.innerText) - 1
+        } else {
+            alert("Item can't be less than 0")
+        }
+         
+    }
+</script>
+</body>
+</html>
