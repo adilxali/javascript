@@ -60,9 +60,9 @@ function functionWithCallback(a, b, callback) {
     callback(result);
 }
 
-functionWithCallback(5, 10, (result) => {
-    console.log(`The result is: ${result}`); // Output: The result is: 15
-});
+// functionWithCallback(5, 10, (result) => {
+//     console.log(`The result is: ${result}`); // Output: The result is: 15
+// });
 
 // recursive function
 function recursiveFunction(n) {
@@ -70,4 +70,14 @@ function recursiveFunction(n) {
         return 0;
     }
     return n + recursiveFunction(n - 1);
-}   
+}  
+
+// clouser function
+function clouserFunction(){
+    let total = 0;
+    function increment(){
+        total++
+        console.log("Total : ",total)
+    }
+    return console.log(total)
+}
