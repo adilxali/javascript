@@ -20,7 +20,10 @@ const users = [{
     age: 25
 }];
 
-const userNames = users.map((user) => user.name);
+const userNames = users.map((user) => { 
+    let name = user.name.toUpperCase(); // Convert the name to uppercase
+    return name
+});
 // The `map` method is used to create a new array containing the names of the users. 
 // It extracts the `name` property from each user object in the `users` array and returns a new array with those names.
 

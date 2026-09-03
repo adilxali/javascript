@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibbo Series</title>
+</head>
+<body>
+    <input id="size" placeholder="size"/>
+    <button>
+        Calculate
+    </button>
+    <ul id="result"></ul>
+    <script>
+        let size = document.querySelector('#size');
+        let button = document.querySelector('button');
+        let result = document.querySelector('#result');
+
+        button.addEventListener('click', function(){
+            let n1 = 0, n2 = 1, nextTerm;
+            let sizeValue = Number(size.value);
+            console.log(sizeValue)
+            for (let i = 1; i <= sizeValue; i++) {
+                result.appendChild(document.createElement('li')).appendChild(document.createTextNode(n1));
+                nextTerm = n1 + n2;
+                n1 = n2;
+                n2 = nextTerm;
+            }
+        })
+    </script>
+</body>
+</html>

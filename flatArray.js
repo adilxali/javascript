@@ -19,6 +19,14 @@ function flatArray(arr){
 
 console.log(flatArray([1, [2, 3], [4, [5, 6]]]))
 
-flatArrayCustomDepth(arr, depth){}
+// Depth => Level of Nested array whose we want to flat.
 
-Depth => Level of Nested array whose we want to flat.
+//45.Convert items of each orders into a single array
+
+const orders = [
+  { id: 1, items: ["Laptop", "Mouse"] },
+  { id: 2, items: ["Keyboard"] },
+  { id: 1, items: ["Monitor", "HDMI Cable"] },
+];
+const items = orders.flatMap((ord) => ord.items);//[["Laptop", "Mouse"],["Keyboard"],["Monitor", "HDMI Cable"]]
+console.log(items);//[ 'Laptop', 'Mouse', 'Keyboard', 'Monitor', 'HDMI Cable' ]

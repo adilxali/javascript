@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+    <style>
+        button {
+            margin: 5px;
+        }
+        ul {
+            list-style-type: none;
+        }
+        ul li {
+            margin: 5px 0;
+            color: #9c3f3f;
+        }
+        .flex {
+            display: flex;
+        }
+        .justify-content-betweens {
+            justify-content: space-between;
+        }
+        .align-items-center {
+            align-items: center;
+        }
+        .selected-page {
+            background-color: #9c3f3f;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <p> Items :
+    <ul id="items"></ul>
+    </p>
+    <div class="flex justify-content-betweens align-items-center ">
+        <div id="pagination">
+            Pages :
+        </div>
+        <select id="pageSize">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+        </select>
+    </div>
+    <script>
+        let page = 1;
+        let pageSize = 5;
+        const items = Array.from({ length: 25 }, (_, i) => `Items ${i + 1}`);
+        const pageSizeSelect = document.querySelector('#pageSize');
+        const paginationContainer = document.querySelector('#pagination');
+
+        pageSizeSelect.addEventListener('change', changePageSize);
+
+        function changePageSize() {
+            page = 1;
+            pageSize = Number(pageSizeSelect.value);
+            renderItems();
+            paginationContainer.innerHTML = 'Pages : ';
+            createPagesButton(Math.ceil(items.length / pageSize));
+        }
+
+        function createPagesButton(totalPages) {
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                if (i === 1) {
+                    button.classList.add('selected-page');
+                }
+                button.innerText = i;
+                button.addEventListener('click', function () {
+                    page = i;
+                    renderItems();
+                    // Remove the selected class from all buttons
+                    const buttons = paginationContainer.querySelectorAll('button');
+                    buttons.forEach(btn => btn.classList.remove('selected-page'));
+                    button.classList.add('selected-page');  
+                })
+                paginationContainer.appendChild(button);
+            }
+        }
+
+        function renderItems() {
+            const startIndex = (page - 1) * pageSize;
+            const endIndex = startIndex + pageSize;
+            const paginatedItems = items.slice(startIndex, endIndex);
+            const itemsContainer = document.querySelector('#items');
+            itemsContainer.innerHTML = '';
+            paginatedItems.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `Page - ${page} - ${item}`;
+                itemsContainer.appendChild(li);
+            });
+        }
+        renderItems();
+        createPagesButton(Math.ceil(items.length / pageSize));
+    </script>
+</body>
+</html>
