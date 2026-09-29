@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Element</title>
+</head>
+<body>
+    <p id="demo" class="demo-class">
+        Hello Demo
+        <span>Span</span>
+    </p>
+    <p id="demo2" class="demo-class"  >
+        Hello Demo2
+        <span>Span2</span>
+    </p>
+    <script>
+        const demo = document.getElementById("demo");
+        console.log("Element",demo);
+        console.log("InnerHTML",demo.innerHTML);
+        console.log("InnerText",demo.innerText);
+        console.log("TextContent",demo.textContent);
+
+        const demoClass = document.getElementsByClassName("demo-class");
+        console.log("Elements with class demo-class",demoClass);
+
+        const demoTag = document.getElementsByTagName("p");
+        console.log("Elements with tag p",demoTag);
+
+        const demoQuery = document.querySelector(".demo-class");
+        console.log("Element with class demo-class using querySelector",demoQuery);
+
+        const demoQueryAll = document.querySelectorAll(".demo-class");
+        console.log("Elements with class demo-class using querySelectorAll",demoQueryAll);
+
+        const demoQuerySpan = document.querySelector("#demo2 span");
+        console.log("Span inside p using querySelector",demoQuerySpan);
+
+    </script>
+</body>
+</html>

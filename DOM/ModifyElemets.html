@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Elements</title>
+    <style>
+        .text {
+            color: red;
+            font-size: 16px;
+        }
+        .modified {
+            color: blue;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p class="text">
+        This is a paragraph.
+    </p>
+    <button id="modifyButton">Modify Text</button>
+    <script>
+        const textElement = document.querySelector(".text")
+        const modifyButton = document.getElementById("modifyButton");
+        // textElement properties console
+        console.log("Element",textElement);
+        modifyButton.addEventListener("click", () => {
+        textElement.textContent = "This is a modified paragraph.";
+        textElement.classList.add("modified");
+        textElement.classList.remove("text");
+        console.log("Modified Element",textElement);
+        });
+        
+    </script>
+</body>
+</html>

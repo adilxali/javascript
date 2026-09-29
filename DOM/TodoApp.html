@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const app = document.getElementById("app");
+        // Header Text
+        const header = document.createElement("h1");
+        header.textContent = "Todo App";
+        app.appendChild(header);
+        // Input Field
+        const input = document.createElement("input");
+        input.type = "text";
+        input.placeholder = "Enter a todo item";
+        input.id = "todoInput";
+        app.appendChild(input);
+        // Add Button
+        const addButton = document.createElement("button");
+        addButton.textContent = "Add";
+        addButton.id = "addButton";
+        addButton.style.cursor = "pointer";
+        app.appendChild(addButton);
+
+        const addBtn = document.getElementById("addButton");
+        addBtn.addEventListener("click", addTodoItem);
+
+        function addTodoItem(){
+            const todoInput = document.getElementById("todoInput");
+            const todoInputValue = todoInput.value.trim();
+            if(todoInputValue === ""){
+                alert("Please enter a todo item.");
+                return;
+            }
+            const todoList = document.getElementById("todoList");
+            if(!todoList){
+                const ul = document.createElement("ul");
+                ul.id = "todoList";
+                app.appendChild(ul);
+            }
+            const li = document.createElement("li");
+            li.innerHTML = `<input type="checkbox"> ${todoInputValue} <button class="deleteBtn" style="margin-left: 10px; cursor: pointer;" onClick="deleteTodoItem(event)">Delete</button>`;
+            document.getElementById("todoList").appendChild(li);
+            todoInput.value = "";
+        }
+        function deleteTodoItem(event){
+            console.log("Delete button clicked", event);
+            if(event.target.classList.contains("deleteBtn")){
+                const li = event.target.parentElement;
+                li.remove();
+            }
+        }
+
+    </script>
+</body>
+</html>
