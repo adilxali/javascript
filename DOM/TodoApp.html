@@ -43,7 +43,7 @@
                 app.appendChild(ul);
             }
             const li = document.createElement("li");
-            li.innerHTML = `<input type="checkbox"> ${todoInputValue} <button class="deleteBtn" style="margin-left: 10px; cursor: pointer;" onClick="deleteTodoItem(event)">Delete</button>`;
+            li.innerHTML = `<input type="checkbox" onClick="completeTodoItem(event)"> ${todoInputValue} <button class="deleteBtn" style="margin-left: 10px; cursor: pointer;" onClick="deleteTodoItem(event)">Delete</button>`;
             document.getElementById("todoList").appendChild(li);
             todoInput.value = "";
         }
@@ -52,6 +52,17 @@
             if(event.target.classList.contains("deleteBtn")){
                 const li = event.target.parentElement;
                 li.remove();
+            }
+        }
+
+        function completeTodoItem(event){
+            if(event.target.type === "checkbox"){
+                const li = event.target.parentElement;
+                if(event.target.checked){
+                    li.style.textDecoration = "line-through";
+                } else {
+                    li.style.textDecoration = "none";
+                }
             }
         }
 
